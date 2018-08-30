@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+
+
+android {
+
+    signingConfigs {
+//        release {
+//            keyAlias 'merchant'
+//            keyPassword 'merchant'
+//            storeFile file('../app/somamerchant.jks')
+//            storePassword 'merchant'
+//        }
+    }
+
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.soma.event"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'API_SERVER_URL', DEBUG_API_SERVER_URL
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+        }
+
+        release {
+            buildConfigField 'String', 'API_SERVER_URL', RELEASE_API_SERVER_URL
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+        }
+    }
+}
+
+def dbflow_version = "4.2.4"
+dependencies {
+    configurations.all {
+        exclude group: 'com.android.support', module: 'support-v13'
+    }
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // 工具类
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.blankj:utilcode:1.17.3'
+    // 网络请求
+    implementation 'com.lzy.net:okgo:3.0.4'
+    // butterknife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    // loading view
+    implementation 'com.zyao89:zloading:1.0.8'
+    //smartrefresh
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    //zxing
+    implementation 'com.google.zxing:core:3.3.0'
+    //状态栏工具类
+    implementation 'com.jaeger.statusbarutil:library:1.4.0'
+    // Material Dialog
+    implementation 'com.afollestad.material-dialogs:core:0.9.4.5'
+    //json处理
+    implementation 'com.alibaba:fastjson:1.2.8'
+    // Google 图片加载库
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    // Glide Transformations
+    implementation 'jp.wasabeef:glide-transformations:3.1.1'
+    // DBFlow
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    //BASE64
+    implementation files('libs/sun.misc.BASE64Decoder.jar')
+    //新国都设备打印
+    implementation files('libs/nexgo-smart-sdk-2.0.7.jar')
+    //收钱吧设备打印
+    implementation files('libs/PaxNeptuneLiteApi_V2.00.04_20170815.jar')
+}

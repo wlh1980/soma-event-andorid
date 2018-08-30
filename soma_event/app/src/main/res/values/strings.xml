@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">SomaReceipt</string>
+
+    <string name="common_sure">Confirm</string>
+    <string name="common_confirm">Confirm</string>
+    <string name="common_editor">Edit</string>
+    <string name="common_delete">Delete</string>
+    <string name="common_delete_success">Delete Success</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_complete">Complete</string>
+    <string name="net_loading">Request the network</string>
+    <string name="common_save">Save</string>
+    <string name="common_sort">Sort</string>
+    <string name="common_activate">Activate</string>
+    <string name="common_deactivate">Deactivate</string>
+    <string name="common_tip">Tips</string>
+
+
+    <string name="login_success">Login Success</string>
+    <string name="account_or_password_wrong">Account or password error</string>
+    <string name="login_edit_account">Please enter the account</string>
+    <string name="login_edit_password">Please enter a password</string>
+    <string name="token_failure">Login timeout, please log in again</string>
+
+    <string name="order_print_way">Printing Method</string>
+    <string name="order_print_choose_clout_print">Enable cloud printer?</string>
+
+    <string name="permission_need">Please set permissions</string>
+    <string name="permission_settings">Set</string>
+
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+
+    <string name="main_print">Print</string>
+
+
+    <string name="toast_3">Bluetooth device is unavailable</string>
+    <string name="toast_4">Bluetooth device not detected. Please open Bluetooth!</string>
+    <string name="toast_5">Not Found InnterPrinter!</string>
+    <string name="toast_6">Bluetooth connect failed!</string>
+
+
+</resources>
