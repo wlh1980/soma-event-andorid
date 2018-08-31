@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:divider="@drawable/shape_gray_horizontal_line"
+              android:orientation="vertical"
+              android:showDividers="middle">
+
+
+    <TextView
+        android:id="@+id/settings_tv_language"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/margin_hdpi_8"
+        android:background="@color/white"
+        android:drawableEnd="@drawable/ic_keyboard_arrow_right_blue_50_24dp"
+        android:gravity="center_vertical"
+        android:paddingEnd="@dimen/margin_hdpi_10"
+        android:paddingStart="@dimen/margin_hdpi_10"
+        android:text="@string/setting_language_select"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_mid_text"/>
+
+
+
+
+    <TextView
+        android:id="@+id/settings_tv_exit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/margin_hdpi_8"
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingEnd="@dimen/margin_hdpi_10"
+        android:paddingStart="@dimen/margin_hdpi_10"
+        android:text="@string/exit_current_account"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_mid_text"/>
+
+</LinearLayout>

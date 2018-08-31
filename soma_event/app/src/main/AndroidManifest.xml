@@ -39,6 +39,8 @@
             android:label="@string/title_activity_login">
         </activity>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".setting.SettingActivity"/>
+        <activity android:name=".setting.LanguageSettingActivity"/>
     </application>
 
 </manifest>

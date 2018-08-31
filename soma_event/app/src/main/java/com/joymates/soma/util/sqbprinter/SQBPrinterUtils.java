@@ -33,7 +33,7 @@ public class SQBPrinterUtils {
         PrinterTester.getInstance(context).setDoubleHeight(false, false);
 
 
-        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.soma_qrcode);
         PrinterTester.getInstance(context).printBitmap(bitmap);
 
         String title = content;

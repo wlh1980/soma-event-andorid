@@ -49,6 +49,7 @@ import com.bumptech.glide.request.transition.Transition;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jaeger.library.StatusBarUtil;
 import com.joymates.soma.R;
+import com.joymates.soma.login.LoginActivity;
 import com.raizlabs.android.dbflow.sql.language.Select;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
@@ -229,7 +230,7 @@ public class Utils {
      * @param ctx
      */
     public static void goLogin(Context ctx) {
-//        gotoActivity((Activity) ctx, LoginActivity.class, false, null, null);
+        gotoActivity((Activity) ctx, LoginActivity.class, false, null, null);
     }
 
     /**

@@ -10,8 +10,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.blankj.utilcode.util.LogUtils;
 import com.joymates.soma.R;
 import com.joymates.soma.entity.BaseVO;
-import com.joymates.soma.entity.OrderEntity;
-import com.joymates.soma.entity.OrderEntity_Table;
+//import com.joymates.soma.entity.OrderEntity;
+//import com.joymates.soma.entity.OrderEntity_Table;
 import com.joymates.soma.http.ResultCode;
 import com.joymates.soma.util.Utils;
 import com.lzy.okgo.OkGo;
@@ -144,7 +144,7 @@ public class PrintHttpRequest {
 
 
                         LogUtils.e("orderId=" + orderId);
-                        checkStatussuccess(context, orderId, response.body());
+//                        checkStatussuccess(context, orderId, response.body());
 //                        BaseVO vo = JSONObject.parseObject(response.body(), BaseVO.class);
                         if (null != handler)
                             handler.sendMessage(message);
@@ -169,25 +169,25 @@ public class PrintHttpRequest {
     }
 
 
-    public static void checkStatussuccess(final Context context, final String orderId, String data) {
-
-        BaseVO vo = JSONObject.parseObject(data, BaseVO.class);
-
-        //获取订单数据
-        OrderEntity orderEntity = SQLite.select().from(OrderEntity.class).where(OrderEntity_Table.sn.eq(orderId))
-                .querySingle();
-        if (orderEntity == null) {
-            return;
-        }
-
-        if (vo.getCode() == ResultCode.CODE_SUCCESS) {
-            //发送打印数据成功
-            orderEntity.setIsSendMsg(OrderEntity.SEND_MSG_SUCCESS);
-        } else {
-            orderEntity.setIsSendMsg(OrderEntity.SEND_MSG_FAILED);
-        }
-        orderEntity.update();//更新数据库
-    }
+//    public static void checkStatussuccess(final Context context, final String orderId, String data) {
+//
+//        BaseVO vo = JSONObject.parseObject(data, BaseVO.class);
+//
+//        //获取订单数据
+//        OrderEntity orderEntity = SQLite.select().from(OrderEntity.class).where(OrderEntity_Table.sn.eq(orderId))
+//                .querySingle();
+//        if (orderEntity == null) {
+//            return;
+//        }
+//
+//        if (vo.getCode() == ResultCode.CODE_SUCCESS) {
+//            //发送打印数据成功
+//            orderEntity.setIsSendMsg(OrderEntity.SEND_MSG_SUCCESS);
+//        } else {
+//            orderEntity.setIsSendMsg(OrderEntity.SEND_MSG_FAILED);
+//        }
+//        orderEntity.update();//更新数据库
+//    }
 
     /**
      * 文件批量上传

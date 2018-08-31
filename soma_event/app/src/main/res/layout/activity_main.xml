@@ -14,17 +14,22 @@
         android:layout_marginTop="50dp"
         android:text="Hello World!"/>
 
+
     <TextView
         android:id="@+id/main_tv_print"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
-        android:background="@color/colorPrimary"
-        android:padding="@dimen/margin_hdpi_12"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/shape_login_tv"
+        android:gravity="center"
+        android:padding="@dimen/margin_hdpi_16"
         android:text="@string/main_print"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimen_mid_text"/>
 
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.joymates.common.base;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,8 @@ public abstract class BaseActivity extends AppCompatActivity implements ICreateT
     protected ImageButton mIbLeft;
     protected TextView mIbRight, mIbRightLeft;
     protected TextView mTvTitle, mTvRight;
+
+    protected Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

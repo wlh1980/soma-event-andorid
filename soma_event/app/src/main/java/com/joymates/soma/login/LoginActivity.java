@@ -46,15 +46,18 @@ public class LoginActivity extends BaseActivity {
     EditText password;
     @BindView(R.id.email_sign_in_button)
     Button emailSignInButton;
-    private Handler mHandler;
+//    private Handler mHandler;
 
     @Override
     public void setLayout() {
         // 全屏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
-        hideTitleBar();
+//        hideTitleBar();
+        mIbLeft.setVisibility(View.GONE);
+        setTitle(getString(R.string.login));
+
     }
 
     @Override
@@ -79,7 +82,7 @@ public class LoginActivity extends BaseActivity {
         if (ResultCode.CODE_SUCCESS == obj.getCode()) {
             toast(getString(R.string.login_success));
             /* 保存 Token and User Information */
-//            TokenXML.saveToken(obj.getToken());
+            TokenXML.saveToken(obj.getToken());
 
 //            UserVO user = obj.getUser();
 //            CacheUtils.getInstance("UserData").put("User", user);
@@ -88,9 +91,11 @@ public class LoginActivity extends BaseActivity {
 //                AccountXML.saveMerchantId(String.valueOf(user.getMerchantId()));
 //            }
 
+            Utils.gotoActivity(LoginActivity.this, MainActivity.class, true, null, null);
+
 
             //选择打印方式
-            selectPrintWay(obj);
+//            selectPrintWay(obj);
 
 
         } else {
@@ -102,24 +107,24 @@ public class LoginActivity extends BaseActivity {
      * 选择打印方式
      */
     public void selectPrintWay(final LoginVO obj) {
-            //如果登录用户是收银员选择打印方式
-            CustomDialogUtils.showCustomDialogTip(this, R.string.order_print_way, R.string
-                    .order_print_choose_clout_print, new CustomDialogUtils.ICustomDialogClickListener() {
-                @Override
-                public void onClick() {
-                    //确认选择云打印的方式
-                    SPUtils.getInstance().put(SPConstants.KEY_SELECT_PRINT_WAY, SPConstants.VALUE_PRINT_WAY_CLOUD);
+        //如果登录用户是收银员选择打印方式
+        CustomDialogUtils.showCustomDialogTip(this, R.string.order_print_way, R.string
+                .order_print_choose_clout_print, new CustomDialogUtils.ICustomDialogClickListener() {
+            @Override
+            public void onClick() {
+                //确认选择云打印的方式
+                SPUtils.getInstance().put(SPConstants.KEY_SELECT_PRINT_WAY, SPConstants.VALUE_PRINT_WAY_CLOUD);
 
-                        Utils.gotoActivity(LoginActivity.this, MainActivity.class, true, null, null);
-                }
-            }, new CustomDialogUtils.ICustomDialogClickListener() {
-                @Override
-                public void onClick() {
-                    //不选择云打印的方式
+                Utils.gotoActivity(LoginActivity.this, MainActivity.class, true, null, null);
+            }
+        }, new CustomDialogUtils.ICustomDialogClickListener() {
+            @Override
+            public void onClick() {
+                //不选择云打印的方式
 
-                        Utils.gotoActivity(LoginActivity.this, MainActivity.class, true, null, null);
-                }
-            });
+                Utils.gotoActivity(LoginActivity.this, MainActivity.class, true, null, null);
+            }
+        });
     }
 
     @Override

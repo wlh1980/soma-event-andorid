@@ -45,10 +45,10 @@ public class XGDPrinteUtils {
         }
         printer.initPrinter();
 
-        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.soma_qrcode);
         printer.appendImage(bitmap, AlignEnum.CENTER);
 
-        printer.appendPrnStr(content, fontBig, AlignEnum.CENTER);
+        printer.appendPrnStr(content, fontNormal, AlignEnum.CENTER);
         printer.startPrint(true, new OnPrintListener() {
             @Override
             public void onPrintResult(final int retCode) {

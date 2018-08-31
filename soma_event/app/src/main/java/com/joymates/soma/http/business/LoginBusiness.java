@@ -5,7 +5,9 @@ import android.os.Handler;
 
 import com.alibaba.fastjson.JSON;
 import com.joymates.common.http.HttpRequest;
+import com.joymates.soma.entity.BaseVO;
 import com.joymates.soma.entity.LoginVO;
+import com.joymates.soma.entity.SaveDiscount;
 import com.joymates.soma.http.MsgTypes;
 import com.joymates.soma.http.URLConstants;
 
@@ -42,6 +44,22 @@ public class LoginBusiness {
                 LoginVO.class, HttpRequest.REQUEST_TYPE_CLASS,
                 MsgTypes.LOGIN_SUCCESS,
                 MsgTypes.LOGIN_FAILED, true);
+    }
+
+
+    /**
+     * 发放优惠券
+     *
+     * @param context
+     * @param handler
+     */
+    public static void saveDiscount(final Context context, Handler handler) {
+
+        HttpRequest.post(context, handler, URLConstants.BASE_URL + URLConstants.DISCOUNT_SAVE,
+                "",
+                SaveDiscount.class, HttpRequest.REQUEST_TYPE_CLASS,
+                MsgTypes.DISCOUNT_SAVE_SUCCESS,
+                MsgTypes.DISCOUNT_SAVE_FAILED, false);
     }
 
 }

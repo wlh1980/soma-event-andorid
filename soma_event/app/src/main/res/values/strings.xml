@@ -31,9 +31,9 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="prompt_email">Account</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -48,6 +48,17 @@
     <string name="toast_4">Bluetooth device not detected. Please open Bluetooth!</string>
     <string name="toast_5">Not Found InnterPrinter!</string>
     <string name="toast_6">Bluetooth connect failed!</string>
+
+    <string name="login">Login</string>
+
+    <string name="setting_language_select">Language Settings</string>
+    <string name="exit_current_account">Logout</string>
+    <string name="main_menu_setting">Settings</string>
+
+    <string name="setting_language_english">English</string>
+    <string name="setting_simplified_chinese">简体中文</string>
+    <string name="setting_language_auto">Following system</string>
+    <string name="common_language_settings">Language</string>
 
 
 </resources>
