@@ -4,27 +4,32 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.alibaba.fastjson.JSONObject;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.joymates.soma.R;
 import com.joymates.soma.entity.BaseVO;
-//import com.joymates.soma.entity.OrderEntity;
-//import com.joymates.soma.entity.OrderEntity_Table;
 import com.joymates.soma.http.ResultCode;
+import com.joymates.soma.util.MaterialDialogUtils;
 import com.joymates.soma.util.Utils;
+import com.joymates.soma.xml.TokenXML;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
-import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.zyao89.view.zloading.ZLoadingDialog;
 import com.zyao89.view.zloading.Z_TYPE;
 
 import java.io.File;
 import java.util.List;
 import java.util.Map;
+
+//import com.joymates.soma.entity.OrderEntity;
+//import com.joymates.soma.entity.OrderEntity_Table;
 
 //import org.json.JSONObject;
 
@@ -66,20 +71,6 @@ public class PrintHttpRequest {
                 .setCancelable(true)
                 .show();
     }
-
-
-    public static boolean activityIsFinish(Context context) {
-        if (context == null) {
-            return true;
-        }
-        if (context instanceof Activity) {
-            if (((Activity) context).isFinishing() || ((Activity) context).isDestroyed()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 
     /**
      * 发送打印数据
@@ -142,10 +133,11 @@ public class PrintHttpRequest {
                             message.obj = JSONObject.parseArray(response.body(), clazz);
                         }
 
-
                         LogUtils.e("orderId=" + orderId);
-//                        checkStatussuccess(context, orderId, response.body());
-//                        BaseVO vo = JSONObject.parseObject(response.body(), BaseVO.class);
+
+                        //判断令牌是否有效
+                        checkTokenSuccess(context, response.body());
+
                         if (null != handler)
                             handler.sendMessage(message);
                     }
@@ -167,27 +159,6 @@ public class PrintHttpRequest {
                     }
                 });
     }
-
-
-//    public static void checkStatussuccess(final Context context, final String orderId, String data) {
-//
-//        BaseVO vo = JSONObject.parseObject(data, BaseVO.class);
-//
-//        //获取订单数据
-//        OrderEntity orderEntity = SQLite.select().from(OrderEntity.class).where(OrderEntity_Table.sn.eq(orderId))
-//                .querySingle();
-//        if (orderEntity == null) {
-//            return;
-//        }
-//
-//        if (vo.getCode() == ResultCode.CODE_SUCCESS) {
-//            //发送打印数据成功
-//            orderEntity.setIsSendMsg(OrderEntity.SEND_MSG_SUCCESS);
-//        } else {
-//            orderEntity.setIsSendMsg(OrderEntity.SEND_MSG_FAILED);
-//        }
-//        orderEntity.update();//更新数据库
-//    }
 
     /**
      * 文件批量上传
@@ -242,7 +213,11 @@ public class PrintHttpRequest {
                             message.obj = JSONObject.parseArray(response.body(), clazz);
                         }
 
-                        handler.sendMessage(message);
+                        //判断令牌是否有效
+                        checkTokenSuccess(context, response.body());
+
+                        if (null != handler)
+                            handler.sendMessage(message);
                     }
 
 
@@ -263,5 +238,32 @@ public class PrintHttpRequest {
                 });
     }
 
+    /**
+     * 判断令牌是否有效
+     *
+     * @param context
+     * @param data
+     */
+    public static void checkTokenSuccess(final Context context, String data) {
+        //判断令牌是否有效
+        BaseVO vo = JSONObject.parseObject(data, BaseVO.class);
+        if (vo.getCode() == ResultCode.CODE_401) {
+            //令牌无效，去重新登录
+
+            if (materialDialog != null && materialDialog.isShowing()) {
+                return;
+            }
+
+            materialDialog = MaterialDialogUtils.showNOneBtnDialogOnlyOne(context, R.string.token_failure, new
+                    MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            TokenXML.clean();
+                            ActivityUtils.finishAllActivities();
+                            Utils.goLogin(context);
+                        }
+                    });
+        }
+    }
 
 }
