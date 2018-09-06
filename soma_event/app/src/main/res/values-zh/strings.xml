@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SomaReceipt</string>
+    <string name="app_name">SomaEvent</string>
 
     <string name="common_sure">确定</string>
     <string name="common_confirm">确认</string>
