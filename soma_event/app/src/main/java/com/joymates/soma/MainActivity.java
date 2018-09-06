@@ -65,6 +65,10 @@ public class MainActivity extends BaseActivity {
         if (saveDiscount.getCode() == ResultCode.CODE_SUCCESS) {
             String data = saveDiscount.getData();
             PrinterUtils.printQRCode(this, data);
+        }else{
+            //请求失败只打印二维码
+            PrinterUtils.printQRCode(this, "");
+//            PrinterUtils.printQRCode(this, "FEX4IC");
         }
     }
 
